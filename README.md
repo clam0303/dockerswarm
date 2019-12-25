@@ -19,8 +19,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-###open firewall port
 ###with all node
+#open firewall port
+
 
 sudo firewall-cmd --zone=public --add-port=2377/tcp --permanent
 
@@ -33,7 +34,7 @@ sudo firewall-cmd --zone=public --add-port=7946/udp --permanent
 sudo firewall-cmd --reload
 
 ###with Leader node
-###init docker swarm
+#init docker swarm
 
 docker swarm init --advertise-addr <your_ip>
 
@@ -42,7 +43,7 @@ docker swarm init --advertise-addr <your_ip>
 docker swarm join --token <your_token> <your_Leader_node_ip>:2377
 
 ###with Leader node
-###find token
+#find token
 
 docker swarm join-token -q worker
 
@@ -51,7 +52,7 @@ docker swarm join-token -q worker
 docker node ls
 
 ###with Leader node
-###create lebal
+#create lebal
 
 docker node update <your_leader_node_id> --label-add master=true
 
@@ -68,6 +69,6 @@ docker stack deploy --compose-file docker-compose.yml <your_stack_name>
 docker ps
 
 ###with Leader node
-###close stack
+#close stack
 
 docker stack rm <your_stack_name>

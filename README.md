@@ -50,7 +50,7 @@ docker swarm join-token -q worker
 
 docker node ls
 
-### with Leader node
+###with Leader node
 ###create lebal
 
 docker node update <your_leader_node_id> --label-add master=true
